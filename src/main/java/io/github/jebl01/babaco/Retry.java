@@ -180,16 +180,17 @@ public class Retry {
                 if(predicate.test(result)) {
                     return resultMapper.apply(result);
                 }
-                Thread.sleep(millisecWait);
-            }
-            catch(InterruptedException e) {
-                return errorMapper.apply(e);
             }
             catch(Throwable e) {
                 if(i == retries - 1) {
                     return errorMapper.apply(new RetryException("retried " + retries + " times but failed with exception",
                             e));
                 }
+            }
+            try {
+                Thread.sleep(millisecWait);
+            } catch (InterruptedException e) {
+                return errorMapper.apply(e);
             }
             millisecWait = (long) (millisecWait * backingOffMultiplier);
         }
@@ -208,16 +209,17 @@ public class Retry {
                 if(result.isRight() && predicate.test(result.getRight().get())) {
                     return Either.right(result.getRight().get());
                 }
-                Thread.sleep(millisecWait);
-            }
-            catch(InterruptedException e) {
-                return Either.left(errorMapper.apply(e));
             }
             catch(Throwable e) {
                 if(i == retries - 1) {
                     return Either.left(errorMapper.apply(new RetryException("retried " + retries + " times but failed with exception",
                             e)));
                 }
+            }
+            try {
+                Thread.sleep(millisecWait);
+            } catch (InterruptedException e) {
+                return Either.left(errorMapper.apply(e));
             }
             millisecWait = (long) (millisecWait * backingOffMultiplier);
         }
