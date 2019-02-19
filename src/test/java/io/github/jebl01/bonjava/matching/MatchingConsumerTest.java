@@ -1,15 +1,15 @@
-package io.github.jebl01.babaco.matching;
+package io.github.jebl01.bonjava.matching;
 
-import static io.github.jebl01.babaco.matching.MatchingConsumer._case;
-import static io.github.jebl01.babaco.matching.MatchingConsumer.match_;
+import static io.github.jebl01.bonjava.matching.MatchingConsumer._case;
+import static io.github.jebl01.bonjava.matching.MatchingConsumer.match_;
 import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import io.github.jebl01.babaco.Either;
-import io.github.jebl01.babaco.Tuple;
+import io.github.jebl01.bonjava.Either;
+import io.github.jebl01.bonjava.Tuple;
 
 import java.io.IOException;
 import java.util.ArrayList;

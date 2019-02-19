@@ -1,4 +1,4 @@
-package io.github.jebl01.babaco;
+package io.github.jebl01.bonjava;
 
 import java.util.Objects;
 import java.util.function.BiConsumer;

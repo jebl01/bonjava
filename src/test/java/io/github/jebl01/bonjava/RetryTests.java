@@ -1,4 +1,4 @@
-package io.github.jebl01.babaco;
+package io.github.jebl01.bonjava;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

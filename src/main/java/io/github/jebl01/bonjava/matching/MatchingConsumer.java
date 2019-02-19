@@ -1,9 +1,9 @@
-package io.github.jebl01.babaco.matching;
+package io.github.jebl01.bonjava.matching;
 
-import static io.github.jebl01.babaco.matching.MatchingConsumer.MatchingStrategy.ALL;
-import static io.github.jebl01.babaco.matching.MatchingConsumer.MatchingStrategy.MAX_ONCE;
+import static io.github.jebl01.bonjava.matching.MatchingConsumer.MatchingStrategy.ALL;
+import static io.github.jebl01.bonjava.matching.MatchingConsumer.MatchingStrategy.MAX_ONCE;
 
-import io.github.jebl01.babaco.Either;
+import io.github.jebl01.bonjava.Either;
 
 import java.util.Arrays;
 import java.util.List;

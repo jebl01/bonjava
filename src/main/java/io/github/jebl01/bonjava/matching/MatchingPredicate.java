@@ -1,10 +1,10 @@
-package io.github.jebl01.babaco.matching;
+package io.github.jebl01.bonjava.matching;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-import io.github.jebl01.babaco.Either;
+import io.github.jebl01.bonjava.Either;
 
 public class MatchingPredicate {
     @SafeVarargs

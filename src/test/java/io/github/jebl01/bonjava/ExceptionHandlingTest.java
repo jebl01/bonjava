@@ -1,12 +1,12 @@
-package io.github.jebl01.babaco;
+package io.github.jebl01.bonjava;
 
-import static io.github.jebl01.babaco.ExceptionHandling.withExceptionHandler;
-import static io.github.jebl01.babaco.ExceptionHandling.withExceptionHandler2;
-import static io.github.jebl01.babaco.ExceptionHandling.withExceptionHandlerConsume;
-import static io.github.jebl01.babaco.ExceptionHandling.withExceptionHandlerConsume2;
-import static io.github.jebl01.babaco.ExceptionHandling.withExceptionHandlerRun;
-import static io.github.jebl01.babaco.ExceptionHandling.withExceptionHandlerSupply;
-import static io.github.jebl01.babaco.Optionals.map2ToEither;
+import static io.github.jebl01.bonjava.ExceptionHandling.withExceptionHandler;
+import static io.github.jebl01.bonjava.ExceptionHandling.withExceptionHandler2;
+import static io.github.jebl01.bonjava.ExceptionHandling.withExceptionHandlerConsume;
+import static io.github.jebl01.bonjava.ExceptionHandling.withExceptionHandlerConsume2;
+import static io.github.jebl01.bonjava.ExceptionHandling.withExceptionHandlerRun;
+import static io.github.jebl01.bonjava.ExceptionHandling.withExceptionHandlerSupply;
+import static io.github.jebl01.bonjava.Optionals.map2ToEither;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

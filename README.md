@@ -1,4 +1,4 @@
-# Babaco
+# Bonjava
 ## Tuple
 Supported tuples are Tuple2 -> Tuple10
 
@@ -13,7 +13,7 @@ Tuple3<String, Boolean, Long> tuple = Tuple.of("String", true, 1L);
 ```
 
 ## Either
-An Either can be either left or right. Right is used to communicate success and left is used to communicate an error (or a warning, bad carma etc).
+An Either can be either left or right. Right is used to communicate success and left is used to communicate an error (or a warning, bad karma etc).
 
 **Operations**
 * `isLeft() : Boolean`
@@ -128,7 +128,7 @@ public Either<String, Integer> getIntProperty(String propertyName) {
 See "[exception handling](#exceptionhandling)" for an even neater way to write the above code!
 
 ## Optionals
-When Sun released Java 8, they finally provided an Optional class. Sadly the implementation falls a bit short. You can map and flat map, but that's more or less it.
+When Oracle released Java 8, they finally provided an Optional class. Sadly the implementation falls a bit short. You can map and flat map, but that's more or less it.
 
 Optionals is a helper class making it easier to do real work with java's Optional class!
 
@@ -145,11 +145,9 @@ Optionals is a helper class making it easier to do real work with java's Optiona
 * `thisOrThat(Optional<T> thiz, Supplier<T> thatSupplier) : Optional<T>`
 * `ifPresent(Optional<T> optional, Consumer<T> consumer) : Optional<T>`
 * `ifPresentOrElse(Optional<T> optional, Consumer<T> consumer, Runnable elseRunner) : void`
-* `guava(Optional<T> javaOptional) : com.google.common.base.Optional<T>`
-* `java(com.google.common.base.Optional<T> javaOptional) : Optional<T>`
 
 ### The basics
-While the `map` and `flatMap` functions are a big leap forward, there is no way to combine Optional's in Sun's implementation.
+While the `map` and `flatMap` functions are a big leap forward, there is no way to combine Optional's in Oracle's implementation.
 With `map2` and `flatMap2` you can combine two Optional's to produce a third. Much like `zip` for *Observables* (RxJava) or `lift2` in the eminent *fuge* library (Atlassian).
 The short description of map2 (and even for flatMap2) is actually the same as for `lift2` in *fugue*;
 
@@ -210,9 +208,6 @@ Either<String, String> result = mapToEither((String v) -> right(v + ":" + v), ()
 Optional<String> result = thisOrThat(thisOptional, thatProvider::getOptional);
 ```
 
-`guava` and `java` are simply helpers to assist in the conversion between sun.java.Optional and guava Optional.
-
-
 ### Motivation
 Instead of having code like this:
 ```java
@@ -259,7 +254,7 @@ Optional<String> result = Optional.of("test").map(
 
 //result will contain the string "TEST"
 //console output:
-// TEST
+//TEST
 ```
 
 **When mapping over a Stream**
@@ -439,7 +434,7 @@ public Either<String, BufferedImage> getImgage(String propertyName, int minWidth
 ## Matching
 In Java there is *if/else*, *switch* and *try/catch* at hand if you want to do any kind of matching and catching. None of these are pariculary useful when going "functional" in java. What you really want is something like Scalas pattern matching. But is that possible in Java? Not really, but we can do quite a lot.
 
-Matching in *functional-utils* is split into three types, *matching function*, *matching consumer* and *matching predicate*
+Matching in *bonjava* is split into three types, *matching function*, *matching consumer* and *matching predicate*
 The API is really simple, all you have is three static methods `match_`, `_case` and `_default`, each in *"MatchingFunction"*, *"MatchingConsumer"* and *"MatchingPredicate"*.
 
 A typical matching function where we match on different exceptions could look like this:
@@ -452,11 +447,12 @@ match_(
 ```
 
 When matching using a *matching function* or a *matching predicate*, the ordering of `_case` statements is important, since the matching is done from top to bottom.
-When matching using a *matching consumer*, all matching cases are executed. The default is only matched if no other matches could be made, this is true for all matchers.
+
+When matching using a *matching consumer*, **all matching cases are executed**. The default is only matched if no other matches could be made, this is true for all matchers.
 This behaviour can be overridden be setting the *strategy* to *MAX_ONCE* (default is *ALL*).
 Types are matched using `isAssignableFrom`, so even super types will match (e.g. `_case(Animal.class,...)` will match objects of type Dog, if Animal is a super type of Dog).
 
-*matching function* and *matching predicate* will throw an exception if no match could be found, so don't forget your **_default**!
+*matching function* and *matching predicate* will throw an exception if no match could be found, so **don't forget** your ***_default***!
 
 **Example with matching function**
 ```java

@@ -1,10 +1,10 @@
-package io.github.jebl01.babaco.matching;
+package io.github.jebl01.bonjava.matching;
 
-import static io.github.jebl01.babaco.matching.MatchingFunction._case;
+import static io.github.jebl01.bonjava.matching.MatchingFunction._case;
 import static junit.framework.TestCase.assertEquals;
 
-import io.github.jebl01.babaco.Either;
-import io.github.jebl01.babaco.Tuple;
+import io.github.jebl01.bonjava.Either;
+import io.github.jebl01.bonjava.Tuple;
 
 import java.io.IOException;
 import java.util.function.Function;

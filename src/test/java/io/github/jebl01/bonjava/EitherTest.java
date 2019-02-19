@@ -1,10 +1,11 @@
-package io.github.jebl01.babaco;
+package io.github.jebl01.bonjava;
 
-import static io.github.jebl01.babaco.Either.fromNullable;
-import static io.github.jebl01.babaco.Either.fromOptional;
-import static io.github.jebl01.babaco.Either.left;
-import static io.github.jebl01.babaco.Either.right;
-import static io.github.jebl01.babaco.matching.MatchingConsumer._case;
+import static io.github.jebl01.bonjava.Either.fromNullable;
+import static io.github.jebl01.bonjava.Either.fromOptional;
+import static io.github.jebl01.bonjava.Either.left;
+import static io.github.jebl01.bonjava.Either.right;
+import static io.github.jebl01.bonjava.matching.MatchingConsumer.*;
+import static io.github.jebl01.bonjava.matching.MatchingConsumer._case;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,7 +15,7 @@ import java.util.Optional;
 
 import org.junit.Test;
 
-import io.github.jebl01.babaco.matching.MatchingConsumer;
+import io.github.jebl01.bonjava.matching.MatchingConsumer;
 
 /**
  * Created by jesblo on 15-08-19.
@@ -114,9 +115,9 @@ public class EitherTest {
     @Test
     public void canConsumeOnEitherAndMatch() {
         Either<String, String> either = right("success");
-        either.consume(MatchingConsumer.match_(
+        either.consume(match_(
                 _case(right(String.class), string -> assertEquals("success", string)),
-                MatchingConsumer._default(e -> fail())
+                _default(e -> fail())
         ));
     }
 

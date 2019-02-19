@@ -1,6 +1,6 @@
-package io.github.jebl01.babaco.matching;
+package io.github.jebl01.bonjava.matching;
 
-import io.github.jebl01.babaco.Either;
+import io.github.jebl01.bonjava.Either;
 
 import java.util.Arrays;
 import java.util.List;

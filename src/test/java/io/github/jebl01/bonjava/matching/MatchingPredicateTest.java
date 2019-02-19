@@ -1,10 +1,10 @@
-package io.github.jebl01.babaco.matching;
+package io.github.jebl01.bonjava.matching;
 
-import static io.github.jebl01.babaco.matching.MatchingPredicate._case;
+import static io.github.jebl01.bonjava.matching.MatchingPredicate._case;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-import io.github.jebl01.babaco.Either;
+import io.github.jebl01.bonjava.Either;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;

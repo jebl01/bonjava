@@ -1,14 +1,14 @@
-package io.github.jebl01.babaco;
+package io.github.jebl01.bonjava;
 
-import static io.github.jebl01.babaco.Optionals.flatMap2;
-import static io.github.jebl01.babaco.Optionals.ifPresent;
-import static io.github.jebl01.babaco.Optionals.ifPresentOrElse;
-import static io.github.jebl01.babaco.Optionals.map2;
-import static io.github.jebl01.babaco.Optionals.map2ToEither;
-import static io.github.jebl01.babaco.Optionals.mapToEither;
-import static io.github.jebl01.babaco.Optionals.thisOrThat;
-import static io.github.jebl01.babaco.Optionals.toStream;
-import static io.github.jebl01.babaco.Optionals.toTuple;
+import static io.github.jebl01.bonjava.Optionals.flatMap2;
+import static io.github.jebl01.bonjava.Optionals.ifPresent;
+import static io.github.jebl01.bonjava.Optionals.ifPresentOrElse;
+import static io.github.jebl01.bonjava.Optionals.map2;
+import static io.github.jebl01.bonjava.Optionals.map2ToEither;
+import static io.github.jebl01.bonjava.Optionals.mapToEither;
+import static io.github.jebl01.bonjava.Optionals.thisOrThat;
+import static io.github.jebl01.bonjava.Optionals.toStream;
+import static io.github.jebl01.bonjava.Optionals.toTuple;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
