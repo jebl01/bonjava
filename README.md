@@ -1,4 +1,8 @@
 # Bonjava
+The fun fun functional java library!
+
+**zero dependencies™**
+
 ## Tuple
 Supported tuples are Tuple2 -> Tuple10
 
