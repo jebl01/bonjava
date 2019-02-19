@@ -8,12 +8,13 @@
 
     <name>Puncher</name>
     <description>Java 8 functional utils</description>
-    <url>https://github.com/jebl01/babaco</url>
+    <url>https://github.com/jebl01/bonjava</url>
 
     <licenses>
         <license>
-            <name>The Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
 
@@ -26,9 +27,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/jebl01/babaco.git</connection>
-        <developerConnection>scm:git:ssh://github.com:jebl01/babaco.git</developerConnection>
-        <url>https://github.com/jebl01/babaco</url>
+        <connection>scm:git:git://github.com/jebl01/bonjava.git</connection>
+        <developerConnection>scm:git:ssh://github.com:jebl01/bonjava.git</developerConnection>
+        <url>https://github.com/jebl01/bonjava</url>
     </scm>
 
     <properties>
