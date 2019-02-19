@@ -10,9 +10,6 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-/**
- * Created by jesblo on 15-08-17.
- */
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public class Optionals {
     public static <T, U, R> BiFunction<Optional<T>, Optional<U>, Optional<R>> map2(BiFunction<T, U, R> f) {

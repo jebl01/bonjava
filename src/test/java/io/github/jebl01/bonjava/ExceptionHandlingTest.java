@@ -23,9 +23,6 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-/**
- * Created by jesblo on 16-02-17.
- */
 public class ExceptionHandlingTest {
     @Test
     public void canCaptureAndMapErrors() {

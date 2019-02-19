@@ -10,9 +10,6 @@ import java.util.Optional;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by jesblo on 15-08-19.
- */
 public class SneakyThrowTest {
 
     @Test(expected = MalformedURLException.class)

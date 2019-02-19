@@ -17,9 +17,6 @@ import org.junit.Test;
 
 import io.github.jebl01.bonjava.matching.MatchingConsumer;
 
-/**
- * Created by jesblo on 15-08-19.
- */
 public class EitherTest {
     @Test
     public void leftIsLeft() {

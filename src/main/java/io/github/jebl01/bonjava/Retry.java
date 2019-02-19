@@ -6,9 +6,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-/**
- * Created by jesblo on 16-02-05.
- */
 public class Retry {
 
     private static void validateCommonArgs(int retries, long millisecWait, double backingOffMultiplier) {

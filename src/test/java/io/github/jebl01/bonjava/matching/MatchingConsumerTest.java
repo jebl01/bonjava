@@ -1,5 +1,6 @@
 package io.github.jebl01.bonjava.matching;
 
+import static io.github.jebl01.bonjava.matching.MatchingConsumer.*;
 import static io.github.jebl01.bonjava.matching.MatchingConsumer._case;
 import static io.github.jebl01.bonjava.matching.MatchingConsumer.match_;
 import static junit.framework.TestCase.assertEquals;
@@ -20,11 +21,11 @@ import org.junit.Test;
 
 public class MatchingConsumerTest {
     private Consumer<Exception> getExceptionConsumer(final List<String> catches) {
-        return MatchingConsumer.match_(
-                MatchingConsumer._case(IOException.class, e -> catches.add("io")),
-                MatchingConsumer._case(IllegalArgumentException.class, e -> catches.add("illegal")),
-                MatchingConsumer._case(RuntimeException.class, e -> catches.add("runtime")),
-                MatchingConsumer._default(e -> catches.add("default")));
+        return match_(
+                _case(IOException.class, e -> catches.add("io")),
+                _case(IllegalArgumentException.class, e -> catches.add("illegal")),
+                _case(RuntimeException.class, e -> catches.add("runtime")),
+                _default(e -> catches.add("default")));
     }
 
     @Test
@@ -41,11 +42,11 @@ public class MatchingConsumerTest {
     @Test
     public void canMatchUsingOnlyPredicate() {
         final List<String> recorder = mock(List.class);
-        final Consumer<Tuple.Tuple2<String, String>> f = MatchingConsumer.match_(
-                MatchingConsumer._case(s -> s.v1.startsWith("a"), s -> recorder.add(s.v1 + s.v2 + ":first")),
-                MatchingConsumer._case(s -> s.v1.startsWith("b"), s -> recorder.add(s.v1 + s.v2 + ":second")),
-                MatchingConsumer._case(s -> s.v1.startsWith("c"), s -> recorder.add(s.v1 + s.v2 + ":third")),
-                MatchingConsumer._default(s -> recorder.add(s.v1 + s.v2 + ":default"))
+        final Consumer<Tuple.Tuple2<String, String>> f = match_(
+                _case(s -> s.v1.startsWith("a"), s -> recorder.add(s.v1 + s.v2 + ":first")),
+                _case(s -> s.v1.startsWith("b"), s -> recorder.add(s.v1 + s.v2 + ":second")),
+                _case(s -> s.v1.startsWith("c"), s -> recorder.add(s.v1 + s.v2 + ":third")),
+                _default(s -> recorder.add(s.v1 + s.v2 + ":default"))
         );
         f.accept(Tuple.of("a_", "test"));
         f.accept(Tuple.of("b_", "test"));
@@ -87,12 +88,12 @@ public class MatchingConsumerTest {
         Either<String, String> leftStringA = Either.left("A");
         Either<String, Integer> rightInt1 = Either.right(1);
         Either<Integer, Integer> leftInt1 = Either.left(1);
-        Consumer<Either> consumer = MatchingConsumer.match_(
-                MatchingConsumer._case(Either.right(String.class), s -> recorder.add("right string " + s)),
-                MatchingConsumer._case(Either.left(String.class), s -> recorder.add("left string " + s)),
-                MatchingConsumer._case(Either.right(Integer.class), i -> recorder.add("right int " + i)),
-                MatchingConsumer._case(Either.left(Integer.class), i -> recorder.add("left int " + i)),
-                MatchingConsumer._default(s -> recorder.add(s + "no match"))
+        Consumer<Either> consumer = match_(
+                _case(Either.right(String.class), s -> recorder.add("right string " + s)),
+                _case(Either.left(String.class), s -> recorder.add("left string " + s)),
+                _case(Either.right(Integer.class), i -> recorder.add("right int " + i)),
+                _case(Either.left(Integer.class), i -> recorder.add("left int " + i)),
+                _default(s -> recorder.add(s + "no match"))
         );
         consumer.accept(rightStringA);
         consumer.accept(leftStringA);
@@ -116,16 +117,16 @@ public class MatchingConsumerTest {
         Either<String, Integer> rightInt2 = Either.right(2);
         Either<Integer, Integer> leftInt1 = Either.left(1);
         Either<Integer, Integer> leftInt2 = Either.left(2);
-        Consumer<Either> consumer = MatchingConsumer.match_(
-                MatchingConsumer._case(Either.right(String.class), "A"::equals, s -> recorder.add("right string A")),
-                MatchingConsumer._case(Either.right(String.class), "B"::equals, s -> recorder.add("right string B")),
-                MatchingConsumer._case(Either.left(String.class), "A"::equals, s -> recorder.add("left string A")),
-                MatchingConsumer._case(Either.left(String.class), "B"::equals, s -> recorder.add("left string B")),
-                MatchingConsumer._case(Either.right(Integer.class), i -> i == 1, i -> recorder.add("right int 1")),
-                MatchingConsumer._case(Either.right(Integer.class), i -> i == 2, i -> recorder.add("right int 2")),
-                MatchingConsumer._case(Either.left(Integer.class), i -> i == 1, i -> recorder.add("left int 1")),
-                MatchingConsumer._case(Either.left(Integer.class), i -> i == 2, i -> recorder.add("left int 2")),
-                MatchingConsumer._default(s -> recorder.add(s + "no match"))
+        Consumer<Either> consumer = match_(
+                _case(Either.right(String.class), "A"::equals, s -> recorder.add("right string A")),
+                _case(Either.right(String.class), "B"::equals, s -> recorder.add("right string B")),
+                _case(Either.left(String.class), "A"::equals, s -> recorder.add("left string A")),
+                _case(Either.left(String.class), "B"::equals, s -> recorder.add("left string B")),
+                _case(Either.right(Integer.class), i -> i == 1, i -> recorder.add("right int 1")),
+                _case(Either.right(Integer.class), i -> i == 2, i -> recorder.add("right int 2")),
+                _case(Either.left(Integer.class), i -> i == 1, i -> recorder.add("left int 1")),
+                _case(Either.left(Integer.class), i -> i == 2, i -> recorder.add("left int 2")),
+                _default(s -> recorder.add(s + "no match"))
         );
         consumer.accept(rightStringA);
         consumer.accept(rightStringB);

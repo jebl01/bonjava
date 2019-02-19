@@ -1,5 +1,6 @@
 package io.github.jebl01.bonjava.matching;
 
+import static io.github.jebl01.bonjava.matching.MatchingPredicate.*;
 import static io.github.jebl01.bonjava.matching.MatchingPredicate._case;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -15,18 +16,18 @@ import org.junit.Test;
 
 public class MatchingPredicateTest {
     private Predicate<Throwable> getExceptionPredicateNoDefault() {
-        return MatchingPredicate.match_(
-                MatchingPredicate._case(IOException.class, e -> true),
-                MatchingPredicate._case(IllegalArgumentException.class, e -> true),
-                MatchingPredicate._case(RuntimeException.class, e -> false));
+        return match_(
+                _case(IOException.class, e -> true),
+                _case(IllegalArgumentException.class, e -> true),
+                _case(RuntimeException.class, e -> false));
     }
 
     @Test
     public void willInvokeDefaultIfNoMatch() {
-        assertTrue(Optional.of("alpha").filter(MatchingPredicate.match_(
-                MatchingPredicate._case(String.class, "beta"::equals, value -> false),
-                MatchingPredicate._case(String.class, "gamma"::equals, value -> false),
-                MatchingPredicate._default(value -> true))
+        assertTrue(Optional.of("alpha").filter(match_(
+                _case(String.class, "beta"::equals, value -> false),
+                _case(String.class, "gamma"::equals, value -> false),
+                _default(value -> true))
         ).isPresent());
     }
 
@@ -37,7 +38,7 @@ public class MatchingPredicateTest {
         assertFalse(getExceptionPredicateNoDefault().test(new RuntimeException()));
     }
 
-    @Test(expected = MatchingPredicate.MatchingException.class)
+    @Test(expected = MatchingException.class)
     public void willThrowExceptionIfNoMatch() {
         assertTrue(getExceptionPredicateNoDefault().test(new IllegalAccessError()));
     }
@@ -49,11 +50,11 @@ public class MatchingPredicateTest {
 
     @Test
     public void canMatchUsingOnlyPredicate() {
-        final Predicate<String> p = MatchingPredicate.match_(
-                MatchingPredicate._case(s -> s.startsWith("a"), s -> false),
-                MatchingPredicate._case(s -> s.startsWith("b"), s -> true),
-                MatchingPredicate._case(s -> s.startsWith("g"), s -> false),
-                MatchingPredicate._default(s -> false)
+        final Predicate<String> p = match_(
+                _case(s -> s.startsWith("a"), s -> false),
+                _case(s -> s.startsWith("b"), s -> true),
+                _case(s -> s.startsWith("g"), s -> false),
+                _default(s -> false)
         );
         assertFalse(p.test("alpha"));
         assertTrue(p.test("beta"));
@@ -63,11 +64,11 @@ public class MatchingPredicateTest {
 
     @Test
     public void canMatchUsingPredicate() {
-        final Predicate<String> p = MatchingPredicate.match_(
-                MatchingPredicate._case(String.class, s -> s.startsWith("a"), s -> false),
-                MatchingPredicate._case(String.class, s -> s.startsWith("b"), s -> true),
-                MatchingPredicate._case(String.class, s -> s.startsWith("g"), s -> false),
-                MatchingPredicate._default(s -> false)
+        final Predicate<String> p = match_(
+                _case(String.class, s -> s.startsWith("a"), s -> false),
+                _case(String.class, s -> s.startsWith("b"), s -> true),
+                _case(String.class, s -> s.startsWith("g"), s -> false),
+                _default(s -> false)
         );
         assertFalse(p.test("alpha"));
         assertTrue(p.test("beta"));
@@ -77,11 +78,11 @@ public class MatchingPredicateTest {
 
     @Test
     public void canMatchNumberUsingPredicate() {
-        final Predicate<Number> p = MatchingPredicate.match_(
-                MatchingPredicate._case(Integer.class, i -> i == 1, i -> true),
-                MatchingPredicate._case(Long.class, l -> l == 1, l -> false),
-                MatchingPredicate._case(Float.class, f -> f.compareTo(1f) == 0, f -> false),
-                MatchingPredicate._case(Double.class, d -> d.compareTo(1d) == 0, d -> false)
+        final Predicate<Number> p = match_(
+                _case(Integer.class, i -> i == 1, i -> true),
+                _case(Long.class, l -> l == 1, l -> false),
+                _case(Float.class, f -> f.compareTo(1f) == 0, f -> false),
+                _case(Double.class, d -> d.compareTo(1d) == 0, d -> false)
         );
         assertTrue(p.test(1));
         assertFalse(p.test(1L));
@@ -91,10 +92,10 @@ public class MatchingPredicateTest {
 
     @Test
     public void canMatchOnObject() {
-        final Predicate<Object> p = MatchingPredicate.match_(
-                MatchingPredicate._case(String.class, s -> false),
-                MatchingPredicate._case(Integer.class, i -> true),
-                MatchingPredicate._case(Exception.class, e -> false)
+        final Predicate<Object> p = match_(
+                _case(String.class, s -> false),
+                _case(Integer.class, i -> true),
+                _case(Exception.class, e -> false)
         );
         assertFalse(p.test("alpha"));
         assertTrue(p.test(123));
@@ -107,11 +108,11 @@ public class MatchingPredicateTest {
         Either<String, String> leftString = Either.left("A");
         Either<String, Integer> rightInt = Either.right(1);
         Either<Integer, Integer> leftInt = Either.left(1);
-        final Predicate<Either> p = MatchingPredicate.match_(
-                MatchingPredicate._case(Either.right(String.class), s -> true),
-                MatchingPredicate._case(Either.left(String.class), s -> false),
-                MatchingPredicate._case(Either.right(Integer.class), i -> true),
-                MatchingPredicate._case(Either.left(Integer.class), i -> false)
+        final Predicate<Either> p = match_(
+                _case(Either.right(String.class), s -> true),
+                _case(Either.left(String.class), s -> false),
+                _case(Either.right(Integer.class), i -> true),
+                _case(Either.left(Integer.class), i -> false)
         );
         assertTrue(p.test(rightString));
         assertFalse(p.test(leftString));
@@ -122,15 +123,15 @@ public class MatchingPredicateTest {
     @Test
     public void canMatchEitherWithPredicate() {
         //we like A and 1 both in right and left...
-        final Predicate<Either> p = MatchingPredicate.match_(
-                MatchingPredicate._case(Either.right(String.class), "A"::equals, s -> true),
-                MatchingPredicate._case(Either.right(String.class), "B"::equals, s -> false),
-                MatchingPredicate._case(Either.left(String.class), "A"::equals, s -> true),
-                MatchingPredicate._case(Either.left(String.class), "B"::equals, s -> false),
-                MatchingPredicate._case(Either.right(Integer.class), i -> i == 1, i -> true),
-                MatchingPredicate._case(Either.right(Integer.class), i -> i == 2, i -> false),
-                MatchingPredicate._case(Either.left(Integer.class), i -> i == 1, i -> true),
-                MatchingPredicate._case(Either.left(Integer.class), i -> i == 2, i -> false)
+        final Predicate<Either> p = match_(
+                _case(Either.right(String.class), "A"::equals, s -> true),
+                _case(Either.right(String.class), "B"::equals, s -> false),
+                _case(Either.left(String.class), "A"::equals, s -> true),
+                _case(Either.left(String.class), "B"::equals, s -> false),
+                _case(Either.right(Integer.class), i -> i == 1, i -> true),
+                _case(Either.right(Integer.class), i -> i == 2, i -> false),
+                _case(Either.left(Integer.class), i -> i == 1, i -> true),
+                _case(Either.left(Integer.class), i -> i == 2, i -> false)
         );
         assertTrue(p.test(Either.right("A")));
         assertFalse(p.test(Either.right("B")));

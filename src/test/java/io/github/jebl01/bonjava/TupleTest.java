@@ -5,9 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by jesblo on 31/05/16.
- */
 public class TupleTest {
     @Test
     public void canMapTuple2() {

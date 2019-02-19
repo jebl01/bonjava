@@ -7,9 +7,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-/**
- * Created by jesblo on 15-08-19.
- */
 public class SneakyThrow {
     @FunctionalInterface
     public interface SneakyFunction<T, R> {

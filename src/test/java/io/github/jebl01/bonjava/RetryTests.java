@@ -16,9 +16,6 @@ import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 
-/**
- * Created by jesblo on 16-02-05.
- */
 @RunWith(Enclosed.class)
 public class RetryTests {
 

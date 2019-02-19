@@ -8,9 +8,6 @@ import java.util.Optional;
 
 import org.junit.Test;
 
-/**
- * Created by jesblo on 15-08-19.
- */
 public class SideEffectsTest {
 
     @Test

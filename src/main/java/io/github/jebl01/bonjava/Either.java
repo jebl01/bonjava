@@ -6,9 +6,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-/**
- * Created by jesblo on 15-08-17.
- */
 public abstract class Either<L, R> {
 
     public static <L, R> Either<L, R> left(L left) {

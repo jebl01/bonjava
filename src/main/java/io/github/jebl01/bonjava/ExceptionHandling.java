@@ -7,9 +7,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-/**
- * Created by jesblo on 16-02-17.
- */
 public class ExceptionHandling {
     public static <T, R> Function<T, R> withExceptionHandler(Function<T, R> f,
                                                              Function<Throwable, R> exceptionHandler) {

@@ -6,9 +6,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-/**
- * Created by jesblo on 15-08-19.
- */
 public class SideEffects {
     public static <T, R> Function<T, R> withSideEffect(Function<T, R> f, Consumer<R> effect) {
         Objects.requireNonNull(f);
