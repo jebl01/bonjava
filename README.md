@@ -3,6 +3,17 @@ The fun fun functional java library!
 
 **zero dependencies™**
 
+**Get it from Maven Central**<br>
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.jebl01/bonjava.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:io.github.jebl01%20AND%20a:bonjava)
+
+```xml
+<dependency>
+    <groupId>io.github.jebl01</groupId>
+    <artifactId>bonjava</artifactId>
+    <version>0.1</version>
+</dependency>
+```
+
 ## Tuple
 Supported tuples are Tuple2 -> Tuple10
 
