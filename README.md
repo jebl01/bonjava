@@ -14,6 +14,15 @@ The fun fun functional java library!
 </dependency>
 ```
 
+* [Tuple](#tuple)
+* [Either](#either)
+* [Optionals](#optionals)
+* [SideEffects](#sideeffects)
+* [ExceptionHandling](#exceptionhandling)
+* [SneakyThrow](#sneakythrow)
+* [Retry](#retry)
+* [Matching](#matching)
+
 ## Tuple
 Supported tuples are Tuple2 -> Tuple10
 
