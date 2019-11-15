@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/jebl01/bonjava/badge.svg?branch=master)](https://coveralls.io/github/jebl01/bonjava?branch=master)
+
 # Bonjava
 The fun fun functional java library!
 
